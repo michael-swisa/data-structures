@@ -8,16 +8,8 @@ namespace Complexity_exercises_and_running_time
 {
     internal class Node
     {
-        public int Value
-        {
-            get { return GetValue(); }
-            set { SetValue(value); }
-        }
-        public Node Next
-        {
-            get { return GetNext(); }
-            set { SetNext(value); }
-        }
+        public int Value;
+        public Node Next;
 
         public int GetValue()
         {

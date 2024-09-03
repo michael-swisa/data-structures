@@ -13,4 +13,14 @@ Console.WriteLine("Hello, World!");
 //}
 
 
-Console.WriteLine(RecurrsionExercises.Ex1Multiply(5, 5));
+LinkedList linkedList = new LinkedList(0);
+linkedList.Add(0);
+linkedList.Add(2);
+linkedList.Add(3);
+linkedList.Add(2);
+linkedList.Add(5);
+Console.WriteLine(linkedList.Display());
+Console.WriteLine(linkedList.Length());
+
+//linkedList.RemoveAllValues(2);
+Console.WriteLine(linkedList.Get(0));
