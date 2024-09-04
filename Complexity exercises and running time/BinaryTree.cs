@@ -132,5 +132,23 @@ namespace Complexity_exercises_and_running_time
             }
             return node;
         }
+
+        public List<int> InOrder()
+        {
+            List<int> result = new List<int>();
+            InOrderRecursive(_root, result);
+            return result;
+        }
+
+        private List<int> InOrderRecursive(TreeNode node, List<int> result)
+        {
+            if (node != null)
+            {
+                InOrderRecursive(node.Left, result);
+                result.Add(node.Value);
+                InOrderRecursive(node.Right, result);
+            }
+            return result;
+        }
     }
 }
