@@ -9,16 +9,16 @@ namespace Complexity_exercises_and_running_time
 {
     internal class BinaryTree
     {
-        private TreeNode root;
+        private TreeNode _root;
 
         public BinaryTree()
         {
-            this.root = null;
+            this._root = null;
         }
 
         public void Insert(int value)
         {
-            root = InsertRecursive(root, value);
+            _root = InsertRecursive(_root, value);
         }
 
         private TreeNode InsertRecursive(TreeNode node, int value)
@@ -37,7 +37,7 @@ namespace Complexity_exercises_and_running_time
 
         public bool Find(int value)
         {
-            return FindRecursive(root, value);
+            return FindRecursive(_root, value);
         }
 
         private bool FindRecursive(TreeNode node, int value)
@@ -52,6 +52,34 @@ namespace Complexity_exercises_and_running_time
                 return FindRecursive(node.Left, value);
 
             return FindRecursive(node.Right, value);
+        }
+
+        public int? GetMin()
+        {
+            return GetMinRecursive(_root);
+        }
+
+        private int? GetMinRecursive(TreeNode node)
+        {
+            if (node == null)
+                return null;
+            if (node.Left == null)
+                return node.Value;
+            return GetMinRecursive(node.Left);
+        }
+
+        public int? GetMax()
+        {
+            return GetMaxRecursive(_root);
+        }
+
+        private int? GetMaxRecursive(TreeNode node)
+        {
+            if (node == null)
+                return null;
+            if (node.Right == null)
+                return node.Value;
+            return GetMaxRecursive(node.Right);
         }
     }
 }
