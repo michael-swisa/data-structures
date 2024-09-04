@@ -167,14 +167,14 @@
         // Method to get a value by index and return the value
         public int Get(int index)
         {
-            if (Head == null)
-                return -1;
-            int count = 0;
             Node current = Head;
-            while (current.Next != null)
+            int count = 0;
+            while (current != null)
             {
                 if (count == index)
+                {
                     return current.Value;
+                }
                 count++;
                 current = current.Next;
             }
