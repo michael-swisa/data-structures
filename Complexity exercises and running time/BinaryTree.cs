@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Complexity_exercises_and_running_time
 {
@@ -17,37 +18,40 @@ namespace Complexity_exercises_and_running_time
 
         public void Insert(int value)
         {
-            TreeNode newNode = new TreeNode(value);
-            if (root == null)
-            {
-                this.root = newNode;
-            }
-            else
-            {
-                InsertRecursive(root, newNode);
-            }
+            root = InsertRecursive(root, value);
         }
 
-        private void InsertRecursive(TreeNode current, TreeNode newNode)
+        private TreeNode InsertRecursive(TreeNode node, int value)
         {
-            if (newNode.Value < current.Value)
+            if (node == null)
             {
-                if (current.Left == null)
-                {
-                    current.Left = newNode;
-                    return;
-                }
-                InsertRecursive(current.Left, newNode);
+                node = new TreeNode(value);
+                return node;
             }
-            else
-            {
-                if (current.Right == null)
-                {
-                    current.Right = newNode;
-                    return;
-                }
-                InsertRecursive(current.Right, newNode);
-            }
+            if (value < node.Value)
+                node.Left = InsertRecursive(node.Left, value);
+            else // value >= node.Value
+                node.Right = InsertRecursive(node.Right, value);
+            return node;
+        }
+
+        public bool Find(int value)
+        {
+            return FindRecursive(root, value);
+        }
+
+        private bool FindRecursive(TreeNode node, int value)
+        {
+            if (node == null)
+                return false;
+
+            if (node.Value == value)
+                return true;
+
+            if (value < node.Value)
+                return FindRecursive(node.Left, value);
+
+            return FindRecursive(node.Right, value);
         }
     }
 }
