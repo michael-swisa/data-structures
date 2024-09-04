@@ -63,9 +63,12 @@ namespace Complexity_exercises_and_running_time
         {
             if (node == null)
                 return null;
-            if (node.Left == null)
-                return node.Value;
-            return GetMinRecursive(node.Left);
+
+            while (node.Left != null)
+            {
+                node = node.Left;
+            }
+            return node.Value;
         }
 
         public int? GetMax()
@@ -77,9 +80,19 @@ namespace Complexity_exercises_and_running_time
         {
             if (node == null)
                 return null;
-            if (node.Right == null)
-                return node.Value;
-            return GetMaxRecursive(node.Right);
+
+            while (node.Right != null)
+            {
+                node = node.Right;
+            }
+            return node.Value;
         }
+
+        public void Delete(int value)
+        {
+            DeleteRecursive(_root, value);
+        }
+
+        private void DeleteRecursive(TreeNode node, int value) { }
     }
 }
