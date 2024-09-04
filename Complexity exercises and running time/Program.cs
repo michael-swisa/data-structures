@@ -1,19 +1,25 @@
-﻿using Complexity_exercises_and_running_time;
+﻿using Complexity_exercises_and_running_time.Testers;
 
-BinaryTree binaryTree = new BinaryTree();
-binaryTree.Insert(5);
-binaryTree.Insert(3);
-binaryTree.Insert(7);
-binaryTree.Insert(2);
-binaryTree.Insert(4);
-binaryTree.Insert(6);
-binaryTree.Insert(8);
+Console.WriteLine("Running All Tests...\n");
 
-Console.WriteLine(binaryTree.Find(5));
-Console.WriteLine(binaryTree.Find(6));
-Console.WriteLine(binaryTree.Find(7));
-Console.WriteLine(binaryTree.Find(8));
-Console.WriteLine(binaryTree.Find(9));
+// Linked List Tests
+Console.WriteLine("=== Linked List Tests ===\n");
+TesterLinkedList.Main();
+Console.WriteLine();
 
-Console.WriteLine(binaryTree.GetMin());
-Console.WriteLine(binaryTree.GetMax());
+// Stack Tests
+Console.WriteLine("=== Stack Tests ===\n");
+TesterStack.Main();
+Console.WriteLine();
+
+// Queue Tests
+Console.WriteLine("=== Queue Tests ===\n");
+TesterQueue.Main();
+Console.WriteLine();
+
+// Binary Tree Tests
+Console.WriteLine("=== Binary Tree Tests ===\n");
+TesterBinaryTree.Main();
+Console.WriteLine();
+
+Console.WriteLine("All tests completed.");
