@@ -33,12 +33,15 @@ namespace Complexity_exercises_and_running_time.Testers
                     throw new Exception();
                 if (stack.Pop() != 1)
                     throw new Exception();
+
                 passedTests++;
-                Console.WriteLine("TestStack_PushAndPop_ShouldReturnCorrectValues: Passed");
+                Console.WriteLine($"Test {totalTests} Passed: Push and Pop return correct values.");
             }
             catch
             {
-                Console.WriteLine("TestStack_PushAndPop_ShouldReturnCorrectValues: Failed");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: Push and Pop did not return correct values."
+                );
             }
         }
 
@@ -55,12 +58,13 @@ namespace Complexity_exercises_and_running_time.Testers
                     throw new Exception();
                 if (stack.Peek() != 3)
                     throw new Exception(); // Peek shouldn't remove the item
+
                 passedTests++;
-                Console.WriteLine("TestStack_Peek_ShouldReturnTopWithoutRemoving: Passed");
+                Console.WriteLine($"Test {totalTests} Passed: Peek returns top without removing.");
             }
             catch
             {
-                Console.WriteLine("TestStack_Peek_ShouldReturnTopWithoutRemoving: Failed");
+                Console.WriteLine($"Test {totalTests} Failed: Peek did not return top correctly.");
             }
         }
 
@@ -77,19 +81,24 @@ namespace Complexity_exercises_and_running_time.Testers
                 stack.Pop();
                 if (stack.GetCount() != 1)
                     throw new Exception();
+
                 passedTests++;
-                Console.WriteLine("TestStack_GetCount_ShouldReturnCorrectCount: Passed");
+                Console.WriteLine(
+                    $"Test {totalTests} Passed: GetCount returns the correct number of elements."
+                );
             }
             catch
             {
-                Console.WriteLine("TestStack_GetCount_ShouldReturnCorrectCount: Failed");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: GetCount did not return the correct number of elements."
+                );
             }
         }
 
         // סיכום
         static void PrintSummary()
         {
-            Console.WriteLine($"Passed {passedTests}/{totalTests} tests.");
+            Console.WriteLine($"\nSummary: {passedTests} out of {totalTests} tests passed.");
             if (passedTests == totalTests)
             {
                 Console.WriteLine("All tests passed!");

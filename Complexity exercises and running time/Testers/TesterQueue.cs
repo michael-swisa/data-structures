@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Complexity_exercises_and_running_time.Testers
+﻿namespace Complexity_exercises_and_running_time.Testers
 {
     internal class TesterQueue
     {
@@ -33,12 +31,17 @@ namespace Complexity_exercises_and_running_time.Testers
                     throw new Exception();
                 if (queue.Dequeue() != 3)
                     throw new Exception();
+
                 passedTests++;
-                Console.WriteLine("TestQueue_EnqueueAndDequeue_ShouldReturnCorrectValues: Passed");
+                Console.WriteLine(
+                    $"Test {totalTests} Passed: Enqueue and Dequeue return correct values."
+                );
             }
             catch
             {
-                Console.WriteLine("TestQueue_EnqueueAndDequeue_ShouldReturnCorrectValues: Failed");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: Enqueue and Dequeue did not return correct values."
+                );
             }
         }
 
@@ -55,12 +58,17 @@ namespace Complexity_exercises_and_running_time.Testers
                     throw new Exception();
                 if (queue.Peek() != 1)
                     throw new Exception(); // Peek shouldn't remove the item
+
                 passedTests++;
-                Console.WriteLine("TestQueue_Peek_ShouldReturnFrontWithoutRemoving: Passed");
+                Console.WriteLine(
+                    $"Test {totalTests} Passed: Peek returns front without removing."
+                );
             }
             catch
             {
-                Console.WriteLine("TestQueue_Peek_ShouldReturnFrontWithoutRemoving: Failed");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: Peek did not return front correctly."
+                );
             }
         }
 
@@ -77,19 +85,24 @@ namespace Complexity_exercises_and_running_time.Testers
                 queue.Dequeue();
                 if (queue.GetCount() != 1)
                     throw new Exception();
+
                 passedTests++;
-                Console.WriteLine("TestQueue_GetCount_ShouldReturnCorrectCount: Passed");
+                Console.WriteLine(
+                    $"Test {totalTests} Passed: GetCount returns the correct number of elements."
+                );
             }
             catch
             {
-                Console.WriteLine("TestQueue_GetCount_ShouldReturnCorrectCount: Failed");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: GetCount did not return the correct number of elements."
+                );
             }
         }
 
         // סיכום
         static void PrintSummary()
         {
-            Console.WriteLine($"Passed {passedTests}/{totalTests} tests.");
+            Console.WriteLine($"\nSummary: {passedTests} out of {totalTests} tests passed.");
             if (passedTests == totalTests)
             {
                 Console.WriteLine("All tests passed!");

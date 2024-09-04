@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Complexity_exercises_and_running_time.Testers
+﻿namespace Complexity_exercises_and_running_time.Testers
 {
     internal class TesterBinaryTree
     {
@@ -30,17 +24,19 @@ namespace Complexity_exercises_and_running_time.Testers
 
                 if (tree.Find(5) && tree.Find(2) && !tree.Find(10))
                 {
-                    Console.WriteLine("Test 1: Insert and Find - Passed");
+                    Console.WriteLine($"Test {totalTests} Passed: Insert and Find elements.");
                     passedTests++;
                 }
                 else
                 {
-                    Console.WriteLine("Test 1: Insert and Find - Failed");
+                    Console.WriteLine($"Test {totalTests} Failed: Insert and Find elements.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 1: Insert and Find - Failed with exception: {ex.Message}");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: Insert and Find elements with exception: {ex.Message}"
+                );
             }
 
             // Test GetMin
@@ -50,17 +46,21 @@ namespace Complexity_exercises_and_running_time.Testers
                 int? min = tree.GetMin();
                 if (min == 2)
                 {
-                    Console.WriteLine("Test 2: GetMin - Passed");
+                    Console.WriteLine(
+                        $"Test {totalTests} Passed: GetMin returns the smallest element."
+                    );
                     passedTests++;
                 }
                 else
                 {
-                    Console.WriteLine($"Test 2: GetMin - Failed (Expected: 2, Got: {min})");
+                    Console.WriteLine(
+                        $"Test {totalTests} Failed: GetMin (Expected: 2, Got: {min})."
+                    );
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 2: GetMin - Failed with exception: {ex.Message}");
+                Console.WriteLine($"Test {totalTests} Failed: GetMin with exception: {ex.Message}");
             }
 
             // Test GetMax
@@ -70,17 +70,21 @@ namespace Complexity_exercises_and_running_time.Testers
                 int? max = tree.GetMax();
                 if (max == 8)
                 {
-                    Console.WriteLine("Test 3: GetMax - Passed");
+                    Console.WriteLine(
+                        $"Test {totalTests} Passed: GetMax returns the largest element."
+                    );
                     passedTests++;
                 }
                 else
                 {
-                    Console.WriteLine($"Test 3: GetMax - Failed (Expected: 8, Got: {max})");
+                    Console.WriteLine(
+                        $"Test {totalTests} Failed: GetMax (Expected: 8, Got: {max})."
+                    );
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 3: GetMax - Failed with exception: {ex.Message}");
+                Console.WriteLine($"Test {totalTests} Failed: GetMax with exception: {ex.Message}");
             }
 
             // Test InOrder
@@ -90,19 +94,21 @@ namespace Complexity_exercises_and_running_time.Testers
                 List<int> inOrder = tree.InOrder();
                 if (inOrder.SequenceEqual(new List<int> { 2, 3, 4, 5, 6, 7, 8 }))
                 {
-                    Console.WriteLine("Test 4: InOrder - Passed");
+                    Console.WriteLine($"Test {totalTests} Passed: InOrder traversal.");
                     passedTests++;
                 }
                 else
                 {
                     Console.WriteLine(
-                        $"Test 4: InOrder - Failed (Expected: 2, 3, 4, 5, 6, 7, 8, Got: {string.Join(", ", inOrder)})"
+                        $"Test {totalTests} Failed: InOrder traversal (Expected: 2, 3, 4, 5, 6, 7, 8, Got: {string.Join(", ", inOrder)})."
                     );
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 4: InOrder - Failed with exception: {ex.Message}");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: InOrder traversal with exception: {ex.Message}"
+                );
             }
 
             // Test PreOrder
@@ -112,19 +118,21 @@ namespace Complexity_exercises_and_running_time.Testers
                 List<int> preOrder = tree.PreOrder();
                 if (preOrder.SequenceEqual(new List<int> { 5, 3, 2, 4, 7, 6, 8 }))
                 {
-                    Console.WriteLine("Test 5: PreOrder - Passed");
+                    Console.WriteLine($"Test {totalTests} Passed: PreOrder traversal.");
                     passedTests++;
                 }
                 else
                 {
                     Console.WriteLine(
-                        $"Test 5: PreOrder - Failed (Expected: 5, 3, 2, 4, 7, 6, 8, Got: {string.Join(", ", preOrder)})"
+                        $"Test {totalTests} Failed: PreOrder traversal (Expected: 5, 3, 2, 4, 7, 6, 8, Got: {string.Join(", ", preOrder)})."
                     );
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 5: PreOrder - Failed with exception: {ex.Message}");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: PreOrder traversal with exception: {ex.Message}"
+                );
             }
 
             // Test Delete
@@ -135,19 +143,21 @@ namespace Complexity_exercises_and_running_time.Testers
                 List<int> inOrder = tree.InOrder();
                 if (!tree.Find(3) && inOrder.SequenceEqual(new List<int> { 2, 4, 5, 6, 7, 8 }))
                 {
-                    Console.WriteLine("Test 6: Delete - Passed");
+                    Console.WriteLine($"Test {totalTests} Passed: Delete an element.");
                     passedTests++;
                 }
                 else
                 {
                     Console.WriteLine(
-                        $"Test 6: Delete - Failed (Expected: 2, 4, 5, 6, 7, 8, Got: {string.Join(", ", inOrder)})"
+                        $"Test {totalTests} Failed: Delete an element (Expected: 2, 4, 5, 6, 7, 8, Got: {string.Join(", ", inOrder)})."
                     );
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test 6: Delete - Failed with exception: {ex.Message}");
+                Console.WriteLine(
+                    $"Test {totalTests} Failed: Delete an element with exception: {ex.Message}"
+                );
             }
 
             // Additional Test: Delete non-existing element
@@ -156,19 +166,19 @@ namespace Complexity_exercises_and_running_time.Testers
             {
                 tree.Delete(10); // Try deleting a non-existing element
                 Console.WriteLine(
-                    "Test 7: Delete non-existing element - Passed (No exception thrown)"
+                    $"Test {totalTests} Passed: Delete non-existing element (No exception thrown)."
                 );
                 passedTests++;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(
-                    $"Test 7: Delete non-existing element - Failed with exception: {ex.Message}"
+                    $"Test {totalTests} Failed: Delete non-existing element with exception: {ex.Message}"
                 );
             }
 
             // Summary
-            Console.WriteLine($"\nSummary: {passedTests}/{totalTests} tests passed.");
+            Console.WriteLine($"\nSummary: {passedTests} out of {totalTests} tests passed.");
             int score = (passedTests * 100) / totalTests;
             Console.WriteLine($"Final Score: {score}%");
 
@@ -182,9 +192,4 @@ namespace Complexity_exercises_and_running_time.Testers
             }
         }
     }
-
-    //public void Play()
-    //{
-
-    //}
 }
