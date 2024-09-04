@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Complexity_exercises_and_running_time
+﻿namespace Complexity_exercises_and_running_time
 {
     internal class LinkedList
     {
@@ -28,8 +20,19 @@ namespace Complexity_exercises_and_running_time
         // Method to add to  the end of the list
         public void Add(int data)
         {
+            if (Head == null)
+            {
+                Node newNode = new Node(data);
+                Head = newNode;
+                return;
+            }
             if (Head != null)
             {
+                if (Head.Value == null)
+                {
+                    Head.Value = data;
+                    return;
+                }
                 Node newNode = new Node(data);
                 Node current = Head;
                 while (current.Next != null)
@@ -43,13 +46,16 @@ namespace Complexity_exercises_and_running_time
         // O(n)
         public string Display()
         {
-            if (Head == null)
-                return "";
-            string values = "";
             Node current = Head;
+            string values = "";
+            if (current != null)
+            {
+                values += current.Value.ToString();
+                current = current.Next;
+            }
             while (current != null)
             {
-                values += current.Value + "-> ";
+                values += " -> " + current.Value;
                 current = current.Next;
             }
             return values;
@@ -79,7 +85,6 @@ namespace Complexity_exercises_and_running_time
             if (Head.Value == data)
             {
                 Head = Head.Next;
-                return;
             }
             Node current = Head;
             while (current.Next != null)
@@ -99,12 +104,12 @@ namespace Complexity_exercises_and_running_time
         {
             if (Head == null)
                 return;
-            while (Head.Value == data)
+            while (Head != null && Head.Value == data)
             {
                 Head = Head.Next;
             }
             Node current = Head;
-            while (current.Next != null)
+            while (current != null && current.Next != null)
             {
                 if (current.Next.Value == data)
                 {
@@ -115,35 +120,40 @@ namespace Complexity_exercises_and_running_time
         }
 
         // Method to remove the value in an index
-        //public int RemoveIndex(int data)
-        //{
-        //    if (Head != null)
-        //    {
-        //        int count = 0;
-        //        Node current = Head;
-        //        while (current.Next != null)
-        //        {
-        //            if (count == data)
-        //            {
-
-        //            }
-        //            count++;
-        //        }
-        //    }
-
-        //    return -1;
-        //}
-
+        public void RemoveIndex(int index)
+        {
+            if (index == 0)
+            {
+                if (Head != null)
+                {
+                    Head = Head.Next;
+                }
+                return;
+            }
+            if (Head == null || index < 0)
+            {
+                return;
+            }
+            Node temp = Head;
+            Node prev = null;
+            for (int i = 0; i < index && temp.Next != null; i++)
+            {
+                prev = temp;
+                temp = temp.Next;
+            }
+            if (temp != null && prev != null)
+            {
+                prev.Next = temp.Next;
+            }
+        }
 
         // O(n)
         // Method to find by value and return index
         public int Find(int data)
         {
-            if (Head == null)
-                return -1;
             int count = 0;
             Node current = Head;
-            while (current.Next != null)
+            while (current != null)
             {
                 if (current.Value == data)
                     return count;
