@@ -43,7 +43,7 @@ namespace Complexity_exercises_and_running_time
             return this.Top.Value;
         }
 
-        public int Count()
+        public int GetCount()
         {
             return this.count;
         }
