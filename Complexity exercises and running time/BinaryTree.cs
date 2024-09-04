@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Complexity_exercises_and_running_time;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Complexity_exercises_and_running_time
 {
@@ -90,9 +92,45 @@ namespace Complexity_exercises_and_running_time
 
         public void Delete(int value)
         {
-            DeleteRecursive(_root, value);
+            _root = DeleteRecursive(_root, value);
         }
 
-        private void DeleteRecursive(TreeNode node, int value) { }
+        private TreeNode DeleteRecursive(TreeNode node, int value)
+        {
+            if (node == null)
+                return node;
+            // If key to be searched is in a subtree
+            if (node.Value > value)
+            {
+                node.Left = DeleteRecursive(node.Left, value);
+            }
+            else if (node.Value < value)
+            {
+                node.Right = DeleteRecursive(node.Right, value);
+            }
+            else
+            {
+                // If root matches with the given key
+
+                // Cases when root has 0 children or
+                // only right child
+                if (node.Left == null)
+                {
+                    return node.Right;
+                }
+
+                // When root has only left child
+                if (node.Right == null)
+                {
+                    return node.Left;
+                }
+
+                // When both children are present
+                int? succ = GetMinRecursive(node.Right);
+                node.Value = succ.Value;
+                node.Right = DeleteRecursive(node.Right, succ.Value);
+            }
+            return node;
+        }
     }
 }
