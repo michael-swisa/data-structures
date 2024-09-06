@@ -52,6 +52,13 @@ namespace Complexity_exercises_and_running_time
             return list[index - 1] + Ex5findSum(list, index - 1);
         }
 
+        //public static double Ex6divide(double a, double b)
+        //{
+        //    if (b == 0)
+        //        return 0;
+        //    return Ex6divide();
+        //}
+
         public static bool Ex7isPalindrome(string str)
         {
             if (str.Length == 1)
@@ -70,6 +77,19 @@ namespace Complexity_exercises_and_running_time
             if (num == 0)
                 return 0;
             return num % 2 + 10 * Ex8DecimalToBinary(num / 2);
+        }
+
+        public static void Ex9evenNumbers(int num)
+        {
+            if (num == 0)
+                return;
+            if (num % 2 != 0)
+                Ex9evenNumbers(num - 1);
+            else
+            {
+                Ex9evenNumbers(num - 2);
+                Console.Write(num + " ");
+            }
         }
     }
 }
