@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Complexity_exercises_and_running_time;
@@ -167,6 +168,30 @@ namespace Complexity_exercises_and_running_time
                 PreOrderRecursive(node.Right, result);
             }
             return result;
+        }
+
+        public void SaveToJsonInOrder(string filePath)
+        {
+            List<int> treeValues = InOrder();
+
+            string jsonString = JsonSerializer.Serialize(treeValues);
+
+            File.WriteAllText(filePath, jsonString);
+        }
+
+        public void LoadFromJson(string filePath)
+        {
+            // קריאת ה-JSON מתוך הקובץ
+            string jsonString = File.ReadAllText(filePath);
+
+            // המרה של ה-JSON לרשימת מספרים
+            List<int>? treeValues = JsonSerializer.Deserialize<List<int>>(jsonString);
+
+            // בניית העץ על בסיס הרשימה
+            foreach (var value in treeValues)
+            {
+                Insert(value);
+            }
         }
     }
 }

@@ -338,6 +338,20 @@ namespace Complexity_exercises_and_running_time.Testers
             Console.WriteLine(
                 "\nFinal Test Summary: " + passedTests + " out of " + totalTests + " tests passed."
             );
+
+            // Summary
+            Console.WriteLine($"\nSummary: {passedTests} out of {totalTests} tests passed.");
+            int score = (passedTests * 100) / totalTests;
+            Console.WriteLine($"Final Score: {score}%");
+
+            if (passedTests == totalTests)
+            {
+                Console.WriteLine("All tests passed successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Some tests failed. Please review the results above.");
+            }
         }
     }
 }

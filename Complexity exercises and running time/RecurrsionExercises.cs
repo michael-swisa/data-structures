@@ -30,12 +30,27 @@ namespace Complexity_exercises_and_running_time
             return a * Ex3Power(a, b - 1);
         }
 
-        //public static int Ex4Reversed(int num)
-        //{
-        //    if (num < 10)
-        //        return num;
-        //    return num % 10 * 10 + Ex4Reversed(num / 10);
-        //}
+        public static int Ex4Reversed(int a)
+        {
+            int p = -1;
+            int b = a;
+            while (b > 0)
+            {
+                p++;
+                b /= 10;
+            }
+            if (a / 10 == 0)
+                return a;
+            return Ex4Reversed(a / 10) + a % 10 * (int)Math.Pow(10, p);
+        }
+
+        public static int Ex5findSum(List<int> list, int index)
+        {
+            if (index == 0)
+                return 0;
+
+            return list[index - 1] + Ex5findSum(list, index - 1);
+        }
 
         public static bool Ex7isPalindrome(string str)
         {
@@ -55,22 +70,6 @@ namespace Complexity_exercises_and_running_time
             if (num == 0)
                 return 0;
             return num % 2 + 10 * Ex8DecimalToBinary(num / 2);
-        }
-
-        public static int ReveseInt(int a)
-        {
-            int p = -1;
-            int b = a;
-            while (b > 0)
-            {
-                p++;
-                b /= 10;
-            }
-            if (a / 10 == 0)
-            {
-                return a;
-            }
-            return ReveseInt(a / 10) + a % 10 * (int)Math.Pow(10, p);
         }
     }
 }
