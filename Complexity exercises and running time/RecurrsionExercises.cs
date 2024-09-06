@@ -79,17 +79,33 @@ namespace Complexity_exercises_and_running_time
             return num % 2 + 10 * Ex8DecimalToBinary(num / 2);
         }
 
-        public static void Ex9evenNumbers(int num)
+        public static int Ex9gcd(int a, int b)
+        {
+            if (b == 0)
+                return a;
+            return Ex9gcd(b, a % b);
+        }
+
+        public static void Ex10evenNumbers(int num)
         {
             if (num == 0)
                 return;
             if (num % 2 != 0)
-                Ex9evenNumbers(num - 1);
+                Ex10evenNumbers(num - 1);
             else
             {
-                Ex9evenNumbers(num - 2);
+                Ex10evenNumbers(num - 2);
                 Console.Write(num + " ");
             }
+        }
+
+        public static int Ex11findMax(int[] arr, int index)
+        {
+            if (index == arr.Length - 1)
+                return arr[index];
+            return arr[index] > Ex11findMax(arr, index + 1)
+                ? arr[index]
+                : Ex11findMax(arr, index + 1);
         }
     }
 }
