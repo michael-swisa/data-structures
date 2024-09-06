@@ -52,12 +52,12 @@ namespace Complexity_exercises_and_running_time
             return list[index - 1] + Ex5findSum(list, index - 1);
         }
 
-        //public static double Ex6divide(double a, double b)
-        //{
-        //    if (b == 0)
-        //        return 0;
-        //    return Ex6divide();
-        //}
+        public static double Ex6divide(double a, double b)
+        {
+            if (a < b)
+                return 0;
+            return 1 + Ex6divide(a - b, b);
+        }
 
         public static bool Ex7isPalindrome(string str)
         {
