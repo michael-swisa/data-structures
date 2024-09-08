@@ -107,5 +107,22 @@ namespace Complexity_exercises_and_running_time
                 ? arr[index]
                 : Ex11findMax(arr, index + 1);
         }
+
+        public static int Ex12subtracEvenOdd(int num)
+        {
+            if (num == 0)
+                return num;
+
+            int a = num % 10;
+            if (a % 2 == 0)
+                return Ex12subtracEvenOdd(num / 10) + a;
+            else
+                return Ex12subtracEvenOdd(num / 10) - a;
+        }
+
+        //public static bool Ex13sequence(int[] arr)
+        //{
+
+        //}
     }
 }
